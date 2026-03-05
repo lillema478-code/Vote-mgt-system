@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everest School - E-Vote Pro 2026</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0f0f 0%, #1a1f2f 50%, #0a0f0f 100%);
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Cyber Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Animated Neon Lines */
+        .neon-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .neon-line::before,
+        .neon-line::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: neonPulse 5s ease-in-out infinite;
+        }
+
+        .neon-line::before {
+            background: #00ffff;
+            top: 10%;
+            left: 10%;
+        }
+
+        .neon-line::after {
+            background: #ff00ff;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* School Header - Cyberpunk Style with Photos */
+        .school-header {
+            background: rgba(10, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 0 0 50px 50px;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .school-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, #00ffff, transparent, #ff00ff, transparent);
+            animation: rotateGlow 10s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .school-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientFlow 5s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .school-header p {
+            font-size: 1.3rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            letter-spacing: 2px;
+        }
+
+        /* Photo Styles */
+        .header-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 30px #00ffff;
+            transition: all 0.5s ease;
+        }
+
+        .header-photo:hover {
+            transform: scale(1.1) rotate(360deg);
+            border-color: #ff00ff;
+            box-shadow: 0 0 50px #ff00ff;
+        }
+
+        .school-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff00ff;
+            box-shadow: 0 0 30px #ff00ff;
+            transition: all 0.5s ease;
+        }
+
+        .school-logo:hover {
+            transform: scale(1.1) rotate(-360deg);
+            border-color: #00ffff;
+            box-shadow: 0 0 50px #00ffff;
+        }
+
+        /* Digital Clock */
+        .digital-clock {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Assignment Card */
+        .assignment-card {
+            background: rgba(20, 25, 35, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .assignment-card:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+        }
+
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: hologramShine 6s ease-in-out infinite;
+        }
+
+        @keyframes hologramShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            20%, 100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .assignment-card h3 {
+            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: 0 0 15px #00ffff;
+        }
+
+        .student-info {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 15, 15, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 10px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: #00ffff !important;
+            text-shadow: 0 0 15px #00ffff;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            color: #fff !important;
+            margin: 0 10px;
+            padding: 8px 20px !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #000 !important;
+            font-weight: 700;
+        }
+
+        /* Cyber Cards */
+        .cyber-card {
+            background: rgba(20, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00ffff;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Candidate Image Style */
+        .candidate-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transition: all 0.5s ease;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .cyber-card:hover .candidate-img {
+            transform: scale(1.1) rotate(360deg);
+            border-color: #ff00ff;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.6);
+        }
+
+        .candidate-name {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            font-size: 1.5rem;
+        }
+
+        .candidate-position {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .vote-badge {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        /* Cyber Button */
+        .cyber-btn {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .cyber-btn:hover::before {
+            left: 100%;
+        }
+
+        .cyber-btn:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 30px #00ffff;
+            transform: translateY(-2px);
+        }
+
+        .cyber-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #666;
+            color: #666;
+        }
+
+        /* Result Cards */
+        .result-card {
+            background: rgba(20, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .result-card:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            color: #00ffff;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px #00ffff);
+        }
+
+        .result-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .result-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Progress Bar */
+        .cyber-progress {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            height: 25px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .cyber-progress-bar {
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            height: 100%;
+            border-radius: 30px;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressGlow 2s linear infinite;
+        }
+
+        @keyframes progressGlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Forms */
+        .cyber-form {
+            background: rgba(20, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+        }
+
+        .cyber-form-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            text-shadow: 0 0 15px #00ffff;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .cyber-form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            border-radius: 3px;
+        }
+
+        .cyber-input {
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 12px 15px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .cyber-input:focus {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            color: #fff;
+            outline: none;
+        }
+
+        .cyber-input::placeholder {
+            color: rgba(0, 255, 255, 0.3);
+        }
+
+        /* Table */
+        .cyber-table {
+            background: rgba(20, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+        }
+
+        .cyber-table table {
+            color: #fff;
+        }
+
+        .cyber-table thead th {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            border-bottom: 2px solid #00ffff;
+            font-size: 1.1rem;
+            padding: 15px;
+        }
+
+        .cyber-table tbody td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .cyber-table tbody tr:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* Table Image */
+        .table-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #00ffff;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        /* Alert */
+        .cyber-alert {
+            background: rgba(20, 25, 35, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            color: #00ffff;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            animation: alertPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes alertPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6); }
+        }
+
+        /* Footer */
+        .cyber-footer {
+            background: rgba(10, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(0, 255, 255, 0.3);
+            padding: 30px 0;
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        .cyber-footer p {
+            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* Winner Animation */
+        .winner-card {
+            border-color: #ff00ff !important;
+            box-shadow: 0 0 60px rgba(255, 0, 255, 0.6) !important;
+            animation: cyberWinner 2s ease-in-out infinite;
+        }
+
+        @keyframes cyberWinner {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-line"></div>
+
+    <!-- School Header - Cyberpunk Edition with Photos -->
+    <div class="school-header" data-aos="fade-down" data-aos-duration="1000">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center">
+                    <!-- የትምህርት ቤት አርማ (School Logo) 
+                         ይህን ፎቶ በእርስዎ አርማ ይቀይሩት -->
+                    <img src="https://img.icons8.com/fluency/96/null/mountain.png" 
+                         alt="Everest School Logo" 
+                         class="school-logo"
+                         onclick="alert('Everest School Logo')">
+                    <p class="mt-2" style="color: #00ffff;">🏔️ SCHOOL LOGO</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h1>⚡ EVEREST SCHOOL ⚡</h1>
+                    <p>E-VOTE PRO 2026 • CYBER EDITION</p>
+                    <div class="digital-clock" id="digitalClock"></div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <!-- የተማሪ ፎቶ (Student Photo) 
+                         ይህን ፎቶ በእርስዎ ፎቶ ይቀይሩት -->
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" 
+                         alt="Student Photo" 
+                         class="header-photo"
+                         onclick="alert('Student Photo - Your Name Here')">
+                    <p class="mt-2" style="color: #ff00ff;">👤 YOUR PHOTO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assignment Info with Photo -->
+    <div class="container">
+        <div class="assignment-card" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <!-- የተማሪ መታወቂያ ፎቶ (Student ID Photo) -->
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" 
+                         alt="Student ID" 
+                         style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #ff00ff; object-fit: cover;">
+                </div>
+                <div class="col-md-10">
+                    <h3><i class="fas fa-crown me-3"></i> STUDENT ASSIGNMENT // CYBER VOTE</h3>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <p><i class="fas fa-school me-2" style="color: #00ffff;"></i> <strong style="color: #00ffff;">SCHOOL:</strong> Everest School</p>
+                    <p><i class="fas fa-code me-2" style="color: #ff00ff;"></i> <strong style="color: #ff00ff;">SUBJECT:</strong> Advanced Web Development</p>
+                    <p><i class="fas fa-microchip me-2" style="color: #00ffff;"></i> <strong style="color: #00ffff;">PROJECT:</strong> Cyber Voting System 2026</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-user-astronaut me-2" style="color: #ff00ff;"></i> <strong style="color: #ff00ff;">STUDENT:</strong> ___________________</p>
+                    <p><i class="fas fa-layer-group me-2" style="color: #00ffff;"></i> <strong style="color: #00ffff;">GRADE/SECTION:</strong> ___________________</p>
+                    <p><i class="fas fa-qrcode me-2" style="color: #ff00ff;"></i> <strong style="color: #ff00ff;">ROLL NUMBER:</strong> ___________________</p>
+                </div>
+            </div>
+            <div class="student-info">
+                <i class="fas fa-robot me-2" style="color: #00ffff;"></i>
+                <strong>SYSTEM STATUS: ONLINE</strong> // Secure Blockchain Voting Protocol Active // One Vote Per Student
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg" data-aos="fade-up" data-aos-duration="1000">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-vote-yea"></i> E-VOTE<span style="color: #ff00ff;">.PRO</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" onclick="showSection('home'); return false;">
+                                <i class="fas fa-home"></i> HOME
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('vote'); return false;">
+                                <i class="fas fa-vote-yea"></i> VOTE
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('results'); return false;">
+                                <i class="fas fa-chart-line"></i> RESULTS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('manage'); return false;">
+                                <i class="fas fa-cog"></i> CONTROL
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home-section" class="section">
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="cyber-card">
+                        <div class="text-center">
+                            <i class="fas fa-robot fa-4x" style="color: #00ffff;"></i>
+                            <h3 class="candidate-name mt-4">WELCOME TO THE FUTURE</h3>
+                            <p class="candidate-position">CYBER VOTING SYSTEM V2.0</p>
+                            <div class="vote-badge">2026</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="cyber-card">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt fa-4x" style="color: #ff00ff;"></i>
+                            <h3 class="candidate-name mt-4">BLOCKCHAIN SECURE</h3>
+                            <p class="candidate-position">100% TAMPER PROOF</p>
+                            <div class="vote-badge">ENCRYPTED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="result-card">
+                        <i class="fas fa-users result-icon"></i>
+                        <div class="result-number" id="totalVotersHome">0</div>
+                        <div class="result-label">ELIGIBLE VOTERS</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="result-card">
+                        <i class="fas fa-user-tie result-icon"></i>
+                        <div class="result-number" id="totalCandidatesHome">0</div>
+                        <div class="result-label">CANDIDATES</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="result-card">
+                        <i class="fas fa-vote-yea result-icon"></i>
+                        <div class="result-number" id="totalVotesHome">0</div>
+                        <div class="result-label">VOTES CAST</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vote Section -->
+        <div id="vote-section" class="section" style="display: none;">
+            <div class="cyber-alert" data-aos="fade-down" data-aos-duration="1000">
+                <i class="fas fa-shield-alt me-3"></i>
+                SECURE VOTING TERMINAL • ONE VOTE PER STUDENT • CHOOSE WISELY
+            </div>
+
+            <div class="row" id="candidatesList"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="section" style="display: none;">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="result-card">
+                        <i class="fas fa-users result-icon"></i>
+                        <div class="result-number" id="totalVotersResult">0</div>
+                        <div class="result-label">VOTERS</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="result-card">
+                        <i class="fas fa-user-tie result-icon"></i>
+                        <div class="result-number" id="totalCandidatesResult">0</div>
+                        <div class="result-label">CANDIDATES</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="result-card">
+                        <i class="fas fa-check-circle result-icon"></i>
+                        <div class="result-number" id="totalVotesResult">0</div>
+                        <div class="result-label">TOTAL VOTES</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="result-card">
+                        <i class="fas fa-chart-line result-icon"></i>
+                        <div class="result-number" id="voterTurnout">0%</div>
+                        <div class="result-label">TURNOUT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="cyber-table">
+                        <h4 class="cyber-form-title">DETAILED RESULTS // LEADERBOARD</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>CANDIDATE</th>
+                                        <th>POSITION</th>
+                                        <th>VOTES</th>
+                                        <th>PERCENTAGE</th>
+                                        <th>PROGRESS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Section -->
+        <div id="manage-section" class="section" style="display: none;">
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="cyber-form">
+                        <h4 class="cyber-form-title">ADD NEW CANDIDATE</h4>
+                        <form id="addCandidateForm">
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #00ffff;">FULL NAME</label>
+                                <input type="text" class="cyber-input" id="candidateName" required placeholder="Enter candidate name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #00ffff;">POSITION</label>
+                                <select class="cyber-input" id="candidatePosition" required>
+                                    <option value="President">PRESIDENT</option>
+                                    <option value="Vice President">VICE PRESIDENT</option>
+                                    <option value="Secretary">SECRETARY</option>
+                                    <option value="Treasurer">TREASURER</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #00ffff;">PHOTO URL</label>
+                                <input type="url" class="cyber-input" id="candidatePhoto" placeholder="Enter photo URL or leave empty for default">
+                                <small class="text-muted">Example: https://example.com/photo.jpg</small>
+                            </div>
+                            <button type="submit" class="cyber-btn">
+                                <i class="fas fa-plus-circle me-2"></i>ADD CANDIDATE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="cyber-form">
+                        <h4 class="cyber-form-title">SYSTEM CONTROL</h4>
+                        <p style="color: #ff00ff;"><i class="fas fa-exclamation-triangle me-2"></i>WARNING: This will reset all votes!</p>
+                        <button class="cyber-btn" onclick="resetVotes()" style="border-color: #ff00ff; color: #ff00ff;">
+                            <i class="fas fa-redo-alt me-2"></i>RESET VOTES
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cyber-footer" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <p>© 2026 EVEREST SCHOOL // CYBER VOTING SYSTEM // STUDENT ASSIGNMENT</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            mirror: false
+        });
+
+        // Digital Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: false 
+            });
+            document.getElementById('digitalClock').innerHTML = `<i class="far fa-clock me-2"></i>${timeString} UTC`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Data Storage
+        let candidates = JSON.parse(localStorage.getItem('everest_candidates_cyber')) || [];
+        let votes = JSON.parse(localStorage.getItem('everest_votes_cyber')) || [];
+        let voters = JSON.parse(localStorage.getItem('everest_voters_cyber')) || [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSampleData();
+            updateStats();
+            showSection('home');
+        });
+
+        // Load Sample Data with Photos
+        function loadSampleData() {
+            if(candidates.length === 0) {
+                candidates = [
+                    { 
+                        id: 1, 
+                        name: 'አበበ ከበደ', 
+                        position: 'President', 
+                        photo: 'https://randomuser.me/api/portraits/men/1.jpg',
+                        votes: 0 
+                    },
+                    { 
+                        id: 2, 
+                        name: 'አልማዝ ታደሰ', 
+                        position: 'President', 
+                        photo: 'https://randomuser.me/api/portraits/women/1.jpg',
+                        votes: 0 
+                    },
+                    { 
+                        id: 3, 
+                        name: 'ብሩክ አየለ', 
+                        position: 'Vice President', 
+                        photo: 'https://randomuser.me/api/portraits/men/2.jpg',
+                        votes: 0 
+                    },
+                    { 
+                        id: 4, 
+                        name: 'ቻልቱ መሀመድ', 
+                        position: 'Secretary', 
+                        photo: 'https://randomuser.me/api/portraits/women/2.jpg',
+                        votes: 0 
+                    }
+                ];
+                saveCandidates();
+            }
+        }
+
+        // Save to localStorage
+        function saveCandidates() {
+            localStorage.setItem('everest_candidates_cyber', JSON.stringify(candidates));
+        }
+
+        function saveVotes() {
+            localStorage.setItem('everest_votes_cyber', JSON.stringify(votes));
+        }
+
+        function saveVoters() {
+            localStorage.setItem('everest_voters_cyber', JSON.stringify(voters));
+        }
+
+        // Show sections
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section + '-section').style.display = 'block';
+            
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            event.target.closest('.nav-link').classList.add('active');
+            
+            if(section === 'vote') displayCandidates();
+            if(section === 'results') displayResults();
+        }
+
+        // Update Statistics
+        function updateStats() {
+            const totalVotes = votes.length;
+            const totalVoters = voters.length;
+            
+            document.getElementById('totalVotersHome').textContent = totalVoters;
+            document.getElementById('totalCandidatesHome').textContent = candidates.length;
+            document.getElementById('totalVotesHome').textContent = totalVotes;
+            
+            if(document.getElementById('totalVotersResult')) {
+                document.getElementById('totalVotersResult').textContent = totalVoters;
+                document.getElementById('totalCandidatesResult').textContent = candidates.length;
+                document.getElementById('totalVotesResult').textContent = totalVotes;
+                
+                const turnout = totalVoters > 0 ? Math.round((totalVotes / totalVoters) * 100) : 0;
+                document.getElementById('voterTurnout').textContent = turnout + '%';
+            }
+        }
+
+        // Display Candidates for Voting with Photos
+        function displayCandidates() {
+            const container = document.getElementById('candidatesList');
+            container.innerHTML = '';
+            
+            candidates.forEach(candidate => {
+                const hasVoted = voters.includes(getVoterId());
+                
+                const card = document.createElement('div');
+                card.className = 'col-md-6 mb-4';
+                card.setAttribute('data-aos', 'fade-up');
+                card.innerHTML = `
+                    <div class="cyber-card text-center">
+                        <img src="${candidate.photo || 'https://via.placeholder.com/150'}" 
+                             class="candidate-img" 
+                             alt="${candidate.name}"
+                             onerror="this.src='https://via.placeholder.com/150'">
+                        <h3 class="candidate-name">${candidate.name}</h3>
+                        <p class="candidate-position">${candidate.position}</p>
+                        <div class="vote-badge">${candidate.votes || 0} VOTES</div>
+                        <button class="cyber-btn" onclick="voteForCandidate(${candidate.id})" ${hasVoted ? 'disabled' : ''}>
+                            <i class="fas fa-vote-yea me-2"></i>CAST VOTE
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Vote for Candidate
+        function voteForCandidate(candidateId) {
+            const voterId = getVoterId();
+            
+            if(voters.includes(voterId)) {
+                alert('ACCESS DENIED: You have already voted in this election!');
+                return;
+            }
+            
+            const candidate = candidates.find(c => c.id === candidateId);
+            if(candidate) {
+                candidate.votes = (candidate.votes || 0) + 1;
+                
+                votes.push({
+                    candidateId: candidateId,
+                    voterId: voterId,
+                    timestamp: new Date().toISOString()
+                });
+                
+                voters.push(voterId);
+                
+                saveCandidates();
+                saveVotes();
+                saveVoters();
+                
+                updateStats();
+                displayCandidates();
+                
+                alert(`VOTE ACCEPTED: Thank you for voting for ${candidate.name}!`);
+            }
+        }
+
+        // Get Voter ID
+        function getVoterId() {
+            let voterId = localStorage.getItem('voterId_cyber');
+            if(!voterId) {
+                voterId = 'VOTER_' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                localStorage.setItem('voterId_cyber', voterId);
+            }
+            return voterId;
+        }
+
+        // Display Results with Photos
+        function displayResults() {
+            const tbody = document.getElementById('resultsTable');
+            tbody.innerHTML = '';
+            
+            const totalVotes = votes.length;
+            const sortedCandidates = [...candidates].sort((a, b) => (b.votes || 0) - (a.votes || 0));
+            
+            sortedCandidates.forEach((candidate, index) => {
+                const votes = candidate.votes || 0;
+                const percentage = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
+                
+                const row = tbody.insertRow();
+                if(index === 0 && votes > 0) {
+                    row.style.background = 'rgba(255, 0, 255, 0.1)';
+                }
+                row.innerHTML = `
+                    <td>
+                        <img src="${candidate.photo || 'https://via.placeholder.com/40'}" 
+                             class="table-img" 
+                             alt="${candidate.name}"
+                             onerror="this.src='https://via.placeholder.com/40'">
+                        ${candidate.name}
+                    </td>
+                    <td>${candidate.position}</td>
+                    <td><strong style="color: #00ffff;">${votes}</strong></td>
+                    <td><strong style="color: #ff00ff;">${percentage}%</strong></td>
+                    <td style="width: 250px;">
+                        <div class="cyber-progress">
+                            <div class="cyber-progress-bar" style="width: ${percentage}%"></div>
+                        </div>
+                    </td>
+                `;
+            });
+            
+            updateStats();
+        }
+
+        // Add Candidate with Photo
+        document.getElementById('addCandidateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const photoUrl = document.getElementById('candidatePhoto').value;
+            
+            const newCandidate = {
+                id: candidates.length + 1,
+                name: document.getElementById('candidateName').value.toUpperCase(),
+                position: document.getElementById('candidatePosition').value,
+                photo: photoUrl || 'https://randomuser.me/api/portraits/men/' + (candidates.length + 1) + '.jpg',
+                votes: 0
+            };
+            
+            candidates.push(newCandidate);
+            saveCandidates();
+            
+            document.getElementById('addCandidateForm').reset();
+            alert('CANDIDATE ADDED: New candidate has been registered!');
+            
+            updateStats();
+        });
+
+        // Reset Votes
+        function resetVotes() {
+            if(confirm('⚠️ WARNING: This will reset all votes. Continue?')) {
+                candidates.forEach(c => c.votes = 0);
+                votes = [];
+                voters = [];
+                
+                saveCandidates();
+                saveVotes();
+                saveVoters();
+                
+                localStorage.removeItem('voterId_cyber');
+                
+                updateStats();
+                if(document.getElementById('results-section').style.display !== 'none') {
+                    displayResults();
+                }
+                
+                alert('SYSTEM RESET: All votes have been cleared!');
+            }
+        }
+    </script>
+</body>
+</html>
